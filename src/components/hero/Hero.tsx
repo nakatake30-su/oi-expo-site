@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion';
 import { HeroBackground } from './HeroBackground';
+import { Particles } from './Particles';
 import { eventInfo } from '@/data/event';
 
 export function Hero() {
@@ -15,6 +16,7 @@ export function Hero() {
   return (
     <section id="hero" className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden px-6 pb-24 pt-32 sm:pb-32 sm:pt-40">
       <HeroBackground />
+      <Particles count={32} />
 
       {/* コンテンツ */}
       <div className="relative z-10 mx-auto flex w-full max-w-6xl flex-col items-center text-center">
