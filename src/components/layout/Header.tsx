@@ -3,6 +3,14 @@
 import { useEffect, useState } from 'react';
 import { eventInfo } from '@/data/event';
 
+const navLinks = [
+  { ja: 'コンセプト', en: 'Concept', href: '#concept' },
+  { ja: '登壇者', en: 'Speakers', href: '#speakers' },
+  { ja: 'セッション', en: 'Sessions', href: '#sessions' },
+  { ja: 'タイムテーブル', en: 'Schedule', href: '#schedule' },
+  { ja: '会場', en: 'Venue', href: '#venue' },
+];
+
 export function Header() {
   const [scrolled, setScrolled] = useState(false);
 
@@ -21,40 +29,42 @@ export function Header() {
           : 'bg-transparent'
       }`}
     >
-      <div className="container-narrow flex h-16 items-center justify-between">
-        <a href="#hero" className="flex items-center gap-2.5 group">
-          <span className="flex h-8 w-8 items-center justify-center rounded bg-electric-500 font-black text-navy-950 shadow-glow transition group-hover:shadow-glow-strong">
+      <div className="container-narrow flex h-20 items-center justify-between">
+        <a href="#hero" className="group flex items-center gap-2.5">
+          <span className="flex h-9 w-9 items-center justify-center rounded bg-electric-500 font-black text-navy-950 shadow-glow transition group-hover:shadow-glow-strong">
             Oi
           </span>
-          <span className="hidden font-display text-sm font-bold uppercase tracking-widest text-white sm:block">
-            Open Innovation <span className="text-electric-400">Expo</span>
+          <span className="hidden flex-col leading-tight sm:flex">
+            <span className="text-sm font-bold text-white">オープンイノベーションEXPO</span>
+            <span className="font-display text-[10px] font-bold uppercase tracking-[0.2em] text-electric-400/80">
+              Open Innovation Expo
+            </span>
           </span>
         </a>
         <nav className="hidden items-center gap-1 lg:flex">
-          {[
-            { label: 'Concept', href: '#concept' },
-            { label: 'Speakers', href: '#speakers' },
-            { label: 'Sessions', href: '#sessions' },
-            { label: 'Schedule', href: '#schedule' },
-            { label: 'Access', href: '#venue' },
-          ].map((link) => (
+          {navLinks.map((link) => (
             <a
               key={link.href}
               href={link.href}
-              className="px-3 py-2 text-xs font-bold uppercase tracking-wider text-white/70 transition hover:text-electric-400"
+              className="group flex flex-col items-center px-3 py-2 leading-none transition"
             >
-              {link.label}
+              <span className="text-xs font-bold text-white/80 group-hover:text-electric-400">
+                {link.ja}
+              </span>
+              <span className="mt-0.5 font-display text-[9px] font-bold uppercase tracking-[0.25em] text-white/40 group-hover:text-electric-400/80">
+                {link.en}
+              </span>
             </a>
           ))}
         </nav>
         <a
           href={eventInfo.entryUrl}
-          className="inline-flex items-center gap-1.5 rounded-full bg-electric-500 px-5 py-2 text-sm font-bold uppercase tracking-wider text-navy-950 shadow-glow transition hover:bg-electric-400"
+          className="inline-flex flex-col items-center rounded-full bg-electric-500 px-5 py-2 leading-none text-navy-950 shadow-glow transition hover:bg-electric-400"
         >
-          Entry
-          <svg className="h-3.5 w-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2.5}>
-            <path strokeLinecap="round" strokeLinejoin="round" d="M17 8l4 4m0 0l-4 4m4-4H3" />
-          </svg>
+          <span className="text-sm font-bold">来場登録</span>
+          <span className="mt-0.5 font-display text-[9px] font-bold uppercase tracking-[0.2em] text-navy-950/70">
+            Entry
+          </span>
         </a>
       </div>
     </header>

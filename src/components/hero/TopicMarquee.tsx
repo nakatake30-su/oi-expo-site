@@ -5,19 +5,19 @@
  * イベント系サイトの定番演出で、情報密度と"勢い"を同時に演出する。
  * 純粋 CSS アニメーションで軽量。
  */
-const topics = [
-  'R&D STRATEGY',
-  'STARTUP COLLABORATION',
-  'AI × DIGITAL',
-  'ROBOTICS',
-  'DEEP TECH',
-  'UNIVERSITY SPINOUT',
-  'NEW BUSINESS',
-  'OPEN INNOVATION',
-  'CARVE-OUT',
-  'GREEN TECH',
-  'QUANTUM',
-  'SPACE',
+const topics: { ja: string; en: string }[] = [
+  { ja: 'R&D戦略', en: 'R&D Strategy' },
+  { ja: 'スタートアップ連携', en: 'Startup Collaboration' },
+  { ja: 'AI・デジタル活用', en: 'AI × Digital' },
+  { ja: 'ロボティクス', en: 'Robotics' },
+  { ja: 'ディープテック', en: 'Deep Tech' },
+  { ja: '産学連携', en: 'Academia' },
+  { ja: '新規事業開発', en: 'New Business' },
+  { ja: 'オープンイノベーション', en: 'Open Innovation' },
+  { ja: 'カーブアウト', en: 'Carve-out' },
+  { ja: 'グリーンテック', en: 'Green Tech' },
+  { ja: '量子技術', en: 'Quantum' },
+  { ja: '宇宙開発', en: 'Space' },
 ];
 
 export function TopicMarquee() {
@@ -34,8 +34,11 @@ export function TopicMarquee() {
       >
         {items.map((t, i) => (
           <span key={i} className="flex items-center gap-10 whitespace-nowrap">
-            <span className="font-display text-xs font-bold uppercase tracking-[0.35em] text-electric-300/90 sm:text-sm">
-              {t}
+            <span className="flex items-baseline gap-2.5">
+              <span className="text-sm font-bold text-white sm:text-base">{t.ja}</span>
+              <span className="font-display text-[10px] font-bold uppercase tracking-[0.3em] text-electric-400/80 sm:text-xs">
+                {t.en}
+              </span>
             </span>
             <span className="text-electric-500/60" aria-hidden>
               ✦
